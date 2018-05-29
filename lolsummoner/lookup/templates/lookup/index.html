@@ -1,0 +1,12 @@
+{% extends 'lookup/layout.html' %}
+
+{% block content %}
+
+<form class="container center-align" action="apisearch" method="POST">
+    {% csrf_token %}
+    <input class="container center-align blue lighten-2" type="text" placeholder="Summoner Name" name="username">
+    <input class="container center-align blue" type="text" placeholder="API Key" name="apikey">
+    <input class="btn" type="submit" value="Submit">
+</form>
+
+{% endblock %}
