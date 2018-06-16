@@ -41,6 +41,8 @@ def apisearch(request):
     ID = str(ID)
     profileIconID = summonerData['profileIconId']
     profileIconID = str(profileIconID)
+    summonerLvl = summonerData['summonerLevel']
+    summonerLvl = str(summonerLvl)
 
     rankedData = requestRankedData(region, ID, apikey)
 
@@ -52,9 +54,7 @@ def apisearch(request):
         context = {
             'username': username,
             'profileIcon': profileIcon,
-            'rank': "N/A",
-            'tier': "N/A",
-            'lp': "N/A"
+            'summonerLvl': summonerLvl
         }
     else:
         context = {
@@ -62,7 +62,8 @@ def apisearch(request):
             'profileIcon': profileIcon,
             'rank': rankedData[0]['rank'],
             'tier': rankedData[0]['tier'],
-            'lp': rankedData[0]['leaguePoints'] 
+            'lp': rankedData[0]['leaguePoints'],
+            'summonerLvl': summonerLvl
         }
 
     return render(request, 'lookup/player.html', context)
