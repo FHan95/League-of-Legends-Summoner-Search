@@ -4,10 +4,12 @@
 
 <form class="center-align" action="apisearch" method="POST">
     {% csrf_token %}
-    <div>
-    <input class="container center-align blue lighten-2" type="text" placeholder="Summoner Name" name="username">
-    <input class="container center-align blue" type="text" placeholder="API Key" name="apikey">
-    <input class="btn" type="submit" value="Submit">
+    <div class="inputSummonerAndSubmit valign-wrapper">
+        <div>
+            <input class="center-align blue lighten-2" type="text" placeholder="Summoner Name" name="username"><br>
+            <input class="btn" type="submit" value="Submit">
+        </div>
+    </div>
 </form>
 
 {% endblock %}

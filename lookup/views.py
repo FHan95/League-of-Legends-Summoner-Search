@@ -32,9 +32,11 @@ def requestVersion(region, APIKey):
 def apisearch(request):
 
     username = request.POST['username']
-    apikey = request.POST['apikey']
+    #Insert API key here
+    apikey = ""
     region = "na"
 
+    #Extracts data from summoner data request
     summonerData = requestSummonerData(region, username, apikey)
     ID = summonerData['id']
     ID = str(ID)
@@ -52,8 +54,10 @@ def apisearch(request):
     #profileIcon = getProfileIcon(version[0], profileIconID)
     profileIcon = "http://ddragon.leagueoflegends.com/cdn/8.12.1/img/profileicon/" + profileIconID + ".png"
 
+    #If statement that stores specific data to context depending if the player is ranked
     if not rankedData:
 
+        #The player's solo ranked icon
         ranked_solo = "provisional.png"
 
         context = {
@@ -65,9 +69,9 @@ def apisearch(request):
             'lp': "",
             'summonerLvl': summonerLvl
         }
-        
     else:
 
+        #The player's solo ranked icon and League points
         ranked_solo = str(rankedData[0]['tier']).lower() + "_" + str(rankedData[0]['rank']).lower() + ".png"
         lp = str(rankedData[0]['leaguePoints']) + " LP"
 

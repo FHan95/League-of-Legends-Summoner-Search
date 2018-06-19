@@ -23,5 +23,19 @@ div, h1 {
 }
 
 .frameRankIcon img {
+    text-align: center;
     vertical-align: middle;
+}
+
+.inputSummonerAndSubmit {
+    height: 60vh;
+    padding: 10px;
+    margin: auto;
+    vertical-align: middle;
+}
+
+.inputSummonerAndSubmit div {
+    display: inline-block;
+    vertical-align: middle;
+    width: 250px;
 }
