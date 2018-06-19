@@ -33,7 +33,6 @@ def apisearch(request):
 
     username = request.POST['username']
     apikey = request.POST['apikey']
-    apikey = "RGAPI-06161b9c-7c83-4bcc-a533-70755ca2ec59";
     region = "na"
 
     summonerData = requestSummonerData(region, username, apikey)
@@ -43,26 +42,42 @@ def apisearch(request):
     profileIconID = str(profileIconID)
     summonerLvl = summonerData['summonerLevel']
     summonerLvl = str(summonerLvl)
+    username = summonerData['name']
+    username = str(username)
 
     rankedData = requestRankedData(region, ID, apikey)
 
-    version = requestVersion(region, apikey)
-
-    profileIcon = getProfileIcon(version[0], profileIconID)
+    #Due to limit rates on version requests, a static URL will be used for testing
+    #version = requestVersion(region, apikey)
+    #profileIcon = getProfileIcon(version[0], profileIconID)
+    profileIcon = "http://ddragon.leagueoflegends.com/cdn/8.12.1/img/profileicon/" + profileIconID + ".png"
 
     if not rankedData:
+
+        ranked_solo = "provisional.png"
+
         context = {
             'username': username,
             'profileIcon': profileIcon,
+            'tier': "Unranked",
+            'rank': "",
+            'ranked_solo': ranked_solo,
+            'lp': "",
             'summonerLvl': summonerLvl
         }
+        
     else:
+
+        ranked_solo = str(rankedData[0]['tier']).lower() + "_" + str(rankedData[0]['rank']).lower() + ".png"
+        lp = str(rankedData[0]['leaguePoints']) + " LP"
+
         context = {
             'username': username,
             'profileIcon': profileIcon,
-            'rank': rankedData[0]['rank'],
             'tier': rankedData[0]['tier'],
-            'lp': rankedData[0]['leaguePoints'],
+            'rank': rankedData[0]['rank'],
+            'ranked_solo': ranked_solo,
+            'lp': lp,
             'summonerLvl': summonerLvl
         }
 

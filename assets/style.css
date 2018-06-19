@@ -1,0 +1,27 @@
+div, h1 {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1120px;
+}
+
+.height-80 {
+    height: 80px;
+}
+
+.frameProfile {
+    height: 110px;
+    line-height: 105px;
+}
+
+.frameProfile img {
+    vertical-align: middle;
+}
+
+.frameRankIcon {
+    height: 80px;
+    line-height: 75px;
+}
+
+.frameRankIcon img {
+    vertical-align: middle;
+}

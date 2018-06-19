@@ -2,28 +2,35 @@
 
 {% block content %}
 
-<div class="container center-align">
-    <img src="{{profileIcon}}" alt="Profile Icon">
+<div class="row">
+    <div class="col s2 grey lighten-3 z-depth-2">
+        <div class="center-align container frameProfile">
+            <img src="{{profileIcon}}" width="100px" alt="Profile Icon" class="circle z-depth-2">
+        </div>
+    </div>
+
+    <div class="col s2">
+        <div class="left-align">
+            <h4><strong>{{username}}</strong></h4>
+            <h6><strong>Level {{summonerLvl}}</strong></h6>
+        </div>
+    </div>
 </div>
 
-<div class="container center-align">
-    The entered username: {{username}}
-</div>
+<div class="row">
+    <div class="frameRankIcon height-80 col s2 center-align grey">
+        {% load static %}
+        {% with 'tier-icons/'|add:ranked_solo as image %}
+        <img src="{% static image %}" width="75px">
+        {% endwith %}
+    </div>
 
-<div class="container center-align">
-    {{username}}'s tier: {{tier}}
-</div>
-
-<div class="container center-align">
-    {{username}}'s rank: {{rank}}
-</div>
-
-<div class="container center-align">
-    {{username}}'s league points: {{lp}}
-</div>
-
-<div class="container center-align">
-    {{username}}'s level: {{summonerLvl}}
+    <div class="height-80 col s2 grey">
+        <ul>
+            <li class="blue-text text-darken-2">{{tier}} {{rank}}</li>
+            <li>{{lp}}</li>
+        </ul>    
+    </div>
 </div>
 
 {% endblock %}
