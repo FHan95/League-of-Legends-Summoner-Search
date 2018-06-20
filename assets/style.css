@@ -1,7 +1,15 @@
-div, h1 {
+div {
     margin-left: auto;
     margin-right: auto;
-    width: 1120px;
+}
+
+.containerProfileIconAndLevel {
+    width: 200px;
+}
+
+.containerRankInfo {
+    width: 300px;
+    height: 200px;
 }
 
 .height-80 {
@@ -9,22 +17,29 @@ div, h1 {
 }
 
 .frameProfile {
-    height: 110px;
-    line-height: 105px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
 }
 
 .frameProfile img {
-    vertical-align: middle;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .frameRankIcon {
-    height: 80px;
-    line-height: 75px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
 }
 
 .frameRankIcon img {
-    text-align: center;
-    vertical-align: middle;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .inputSummonerAndSubmit {
@@ -38,4 +53,21 @@ div, h1 {
     display: inline-block;
     vertical-align: middle;
     width: 250px;
+}
+
+.summonerLevel {
+    background-color: rgb(50,50,50);
+    border: 1px solid rgb(218,165,32);
+    border-radius: 50%;
+    color: rgb(218,165,32);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1em;
+    font-weight: bold;    position: relative;
+    top: -20px;
+    width: 25px;
+}
+
+.username {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 2em;
 }

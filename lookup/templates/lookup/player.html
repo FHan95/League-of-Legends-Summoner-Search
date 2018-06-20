@@ -1,36 +1,35 @@
 {% extends 'lookup/layout.html' %}
 
 {% block content %}
+<div class="center-align z-depth-2">
+    <strong class="username">{{username}}</strong>
+</div>
 
-<div class="row">
-    <div class="col s2 grey lighten-3 z-depth-2">
-        <div class="center-align container frameProfile">
-            <img src="{{profileIcon}}" width="100px" alt="Profile Icon" class="circle z-depth-2">
+<div class="containerProfileIconAndLevel center-align">
+    <div class="">
+        <div class="frameProfile">
+            <img src="{{profileIcon}}" width="100px" alt="Profile Icon" class="z-depth-2">
         </div>
-    </div>
 
-    <div class="col s2">
-        <div class="left-align">
-            <h4><strong>{{username}}</strong></h4>
-            <h6><strong>Level {{summonerLvl}}</strong></h6>
-        </div>
+        <div class="summonerLevel z-depth-2">
+            <strong>{{summonerLvl}}</strong>
+       </div>       
     </div>
 </div>
 
-<div class="row">
-    <div class="frameRankIcon height-80 col s2 center-align grey">
+<div class="containerRankInfo z-depth-2">
+    <div class="frameRankIcon center-align" >
         {% load static %}
         {% with 'tier-icons/'|add:ranked_solo as image %}
-        <img src="{% static image %}" width="75px">
+        <img src="{% static image %}" width="150px">
         {% endwith %}
     </div>
 
-    <div class="height-80 col s2 grey">
+    <div class="center-align grey lighten-1">
         <ul>
             <li class="blue-text text-darken-2">{{tier}} {{rank}}</li>
             <li>{{lp}}</li>
         </ul>    
     </div>
 </div>
-
 {% endblock %}
