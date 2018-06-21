@@ -2,25 +2,25 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-    <script src="https://unpkg.com/vue"></script>
-    <title>League of Legends Summoner Data</title>
-</head>
-<body class="grey lighten-3">
-    <header class="container center-align">
-        <h1>League of Legends Summoner Search</h1>
-    </header>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+        <script src="https://unpkg.com/vue"></script>
+        <title>League of Legends Summoner Data</title>
+    </head>
+    <body class="grey lighten-3">
+        <header class="container center-align">
+            <h1><a href="../lookup/">League of Legends Summoner Search</a></h1>
+        </header>
 
-    <div class="container">
-        {% block content %}
-        {% endblock %}
+        <div class="container">
+            {% block content %}
+            {% endblock %}
 
-        <br>
-    </div>
-</body>
+            <br>
+        </div>
+    </body>
 </html>

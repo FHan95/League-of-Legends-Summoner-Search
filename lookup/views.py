@@ -33,7 +33,7 @@ def apisearch(request):
 
     username = request.POST['username']
     #Insert API key here
-    apikey = ""
+    apikey = "RGAPI-9a527780-f904-4486-91f5-5acc4e346e6b"
     region = "na"
 
     #Extracts data from summoner data request
