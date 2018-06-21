@@ -38,55 +38,64 @@ def apisearch(request):
 
     #Extracts data from summoner data request
     summonerData = requestSummonerData(region, username, apikey)
-    ID = summonerData['id']
-    ID = str(ID)
-    profileIconID = summonerData['profileIconId']
-    profileIconID = str(profileIconID)
-    summonerLvl = summonerData['summonerLevel']
-    summonerLvl = str(summonerLvl)
-    username = summonerData['name']
-    username = str(username)
 
-    rankedData = requestRankedData(region, ID, apikey)
-
-    #Due to limit rates on version requests, a static URL will be used for testing
-    #version = requestVersion(region, apikey)
-    #profileIcon = getProfileIcon(version[0], profileIconID)
-    profileIcon = "http://ddragon.leagueoflegends.com/cdn/8.12.1/img/profileicon/" + profileIconID + ".png"
-
-    #If statement that stores specific data to context depending if the player is ranked
-    if not rankedData:
-
-        #The player's solo ranked icon
-        ranked_solo = "provisional.png"
-
-        context = {
-            'username': username,
-            'profileIcon': profileIcon,
-            'tier': "Unranked",
-            'rank': "",
-            'ranked_solo': ranked_solo,
-            'lp': "",
-            'summonerLvl': summonerLvl
-        }
+    #If the username entered does not exist
+    if 'status' in summonerData:
+        if str(summonerData['status']['status_code']) == '404':
+            return render(request, 'lookup/index.html')
+    
     else:
 
-        #The player's solo ranked icon and League points
-        ranked_solo = str(rankedData[0]['tier']).lower() + "_" + str(rankedData[0]['rank']).lower() + ".png"
-        lp = str(rankedData[0]['leaguePoints']) + " LP"
+        ID = summonerData['id']
+        ID = str(ID)
+        profileIconID = summonerData['profileIconId']
+        profileIconID = str(profileIconID)
+        summonerLvl = summonerData['summonerLevel']
+        summonerLvl = str(summonerLvl)
+        username = summonerData['name']
+        username = str(username)
 
-        context = {
-            'username': username,
-            'profileIcon': profileIcon,
-            'tier': rankedData[0]['tier'],
-            'rank': rankedData[0]['rank'],
-            'ranked_solo': ranked_solo,
-            'lp': lp,
-            'summonerLvl': summonerLvl
-        }
+        rankedData = requestRankedData(region, ID, apikey)
 
-    return render(request, 'lookup/player.html', context)
-    
+        #Due to limit rates on version requests, a static URL will be used for testing
+        #version = requestVersion(region, apikey)
+        #profileIcon = getProfileIcon(version[0], profileIconID)
+        profileIcon = "http://ddragon.leagueoflegends.com/cdn/8.12.1/img/profileicon/" + profileIconID + ".png"
+
+        #If the player is ranked
+        if not rankedData:
+
+            #The player's solo ranked icon
+            ranked_solo = "provisional.png"
+
+            context = {
+                'username': username,
+                'profileIcon': profileIcon,
+                'tier': "Unranked",
+                'rank': "",
+                'ranked_solo': ranked_solo,
+                'lp': "",
+                'summonerLvl': summonerLvl
+            }
+        else:
+
+            #The player's solo ranked icon and League points
+            ranked_solo = str(rankedData[0]['tier']).lower() + "_" + str(rankedData[0]['rank']).lower() + ".png"
+            lp = str(rankedData[0]['leaguePoints']) + " LP"
+
+            context = {
+                'username': username,
+                'profileIcon': profileIcon,
+                'tier': rankedData[0]['tier'],
+                'rank': rankedData[0]['rank'],
+                'ranked_solo': ranked_solo,
+                'lp': lp,
+                'summonerLvl': summonerLvl
+            }
+
+        return render(request, 'lookup/player.html', context)
+
+#The index page
 def index(request):
 
     return render(request, 'lookup/index.html')
