@@ -3,6 +3,36 @@ div {
     margin-right: auto;
 }
 
+nav {
+    height: 100px;
+    line-height: 100px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
+    height: 100px;
+    line-height: 100px;
+}
+
+nav .button-collapse i {
+    height: 100px;
+    line-height: 100px;
+}
+
+nav .brand-logo { 
+    font-size: 3em; 
+    white-space: nowrap;
+}
+
+@media only screen and (min-width: 601px){
+    nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
+        height: 100px;
+        line-height: 100px;
+    }
+}
+
 .containerProfileIconAndLevel {
     width: 200px;
 }
@@ -43,7 +73,7 @@ div {
 }
 
 .inputSummonerAndSubmit {
-    height: 60vh;
+    height: 500px;
     padding: 10px;
     margin: auto;
     vertical-align: middle;
@@ -53,6 +83,11 @@ div {
     display: inline-block;
     vertical-align: middle;
     width: 250px;
+}
+
+.result {
+    position: relative;
+    top: 200px;
 }
 
 .summonerLevel {

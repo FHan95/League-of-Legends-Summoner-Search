@@ -1,35 +1,37 @@
 {% extends 'lookup/layout.html' %}
 
 {% block content %}
-<div class="center-align z-depth-2">
-    <strong class="username">{{username}}</strong>
-</div>
+<div class="result">
+    <div class="center-align z-depth-2">
+        <strong class="username">{{username}}</strong>
+    </div>
 
-<div class="containerProfileIconAndLevel center-align">
-    <div class="">
-        <div class="frameProfile">
-            <img src="{{profileIcon}}" width="100px" alt="Profile Icon" class="z-depth-2">
+    <div class="containerProfileIconAndLevel center-align">
+        <div class="">
+            <div class="frameProfile">
+                <img src="{{profileIcon}}" width="100px" alt="Profile Icon" class="z-depth-2">
+            </div>
+
+            <div class="summonerLevel z-depth-2">
+                <strong>{{summonerLvl}}</strong>
+        </div>       
+        </div>
+    </div>
+
+    <div class="containerRankInfo z-depth-2">
+        <div class="frameRankIcon center-align" >
+            {% load static %}
+            {% with 'tier-icons/'|add:ranked_solo as image %}
+            <img src="{% static image %}" width="150px">
+            {% endwith %}
         </div>
 
-        <div class="summonerLevel z-depth-2">
-            <strong>{{summonerLvl}}</strong>
-       </div>       
-    </div>
-</div>
-
-<div class="containerRankInfo z-depth-2">
-    <div class="frameRankIcon center-align" >
-        {% load static %}
-        {% with 'tier-icons/'|add:ranked_solo as image %}
-        <img src="{% static image %}" width="150px">
-        {% endwith %}
-    </div>
-
-    <div class="center-align grey lighten-1">
-        <ul>
-            <li class="blue-text text-darken-2">{{tier}} {{rank}}</li>
-            <li>{{lp}}</li>
-        </ul>    
+        <div class="center-align grey lighten-1">
+            <ul>
+                <li class="blue-text text-darken-2">{{tier}} {{rank}}</li>
+                <li>{{lp}}</li>
+            </ul>    
+        </div>
     </div>
 </div>
 {% endblock %}
